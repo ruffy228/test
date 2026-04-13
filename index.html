@@ -375,16 +375,16 @@
                 
                 const message = document.getElementById('message');
                 if (score >= 18) {
-                    message.textContent = "優秀！你對香港國家安全知識有很好的了解。";
+                    message.textContent = "Perfect";
                     message.style.color = "green";
                 } else if (score >= 15) {
-                    message.textContent = "良好！你對香港國家安全知識有基本了解，但還有提升空間。";
+                    message.textContent = "Nice";
                     message.style.color = "blue";
                 } else if (score >= 10) {
-                    message.textContent = "及格！建議你進一步學習香港國家安全相關知識。";
+                    message.textContent = "Good";
                     message.style.color = "orange";
                 } else {
-                    message.textContent = "需要加強學習！請認真學習香港國家安全相關知識。";
+                    message.textContent = "Need improvement";
                     message.style.color = "red";
                 }
                 
