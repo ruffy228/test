@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -18,6 +19,35 @@
             text-align: center;
             border-bottom: 2px solid #d40000;
             padding-bottom: 10px;
+        }
+        .timer {
+            background-color: #d40000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .info-form {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .info-form label {
+            display: inline-block;
+            width: 80px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .info-form input {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
         .question {
             background-color: white;
@@ -61,11 +91,9 @@
         }
         .correct {
             color: green;
-            font-weight: bold;
         }
         .incorrect {
             color: red;
-            font-weight: bold;
         }
         .admin-panel {
             margin-top: 30px;
@@ -83,6 +111,24 @@
             background-color: #e8f4f8;
             border-radius: 5px;
         }
+        .user-info {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .time-warning {
+            color: yellow;
+            font-weight: bold;
+        }
+        .time-critical {
+            color: red;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
         .disabled-option {
             opacity: 0.7;
             pointer-events: none;
@@ -91,8 +137,20 @@
 </head>
 <body>
     <h1>香港國家安全知識測試</h1>
+    <div class="timer">剩餘時間: <span id="time">01:15</span></div>
+    
+    <div class="info-form">
+        <h3>個人資料</h3>
+        <label for="name">姓名：</label>
+        <input type="text" id="name" required><br>
+        <label for="class">班別：</label>
+        <input type="text" id="class" required><br>
+        <label for="studentId">學號：</label>
+        <input type="text" id="studentId" required>
+    </div>
+    
     <form id="quiz">
-        <!-- Questions 1-20 -->
+        <!-- 問題1 -->
         <div class="question">
             <p>1. 《香港國安法》於哪一年頒布實施？</p>
             <div class="options">
@@ -102,6 +160,8 @@
                 <div class="option"><input type="radio" name="q1" value="d"> d) 2018年</div>
             </div>
         </div>
+
+        <!-- 問題2 -->
         <div class="question">
             <p>2. 香港特別行政區維護國家安全的主要責任由誰承擔？</p>
             <div class="options">
@@ -111,6 +171,8 @@
                 <div class="option"><input type="radio" name="q2" value="d"> d) 香港立法會</div>
             </div>
         </div>
+
+        <!-- 問題3 -->
         <div class="question">
             <p>3. 以下哪項不屬於《香港國安法》規定的四類危害國家安全罪行？</p>
             <div class="options">
@@ -120,6 +182,8 @@
                 <div class="option"><input type="radio" name="q3" value="d"> d) 貪污賄賂罪</div>
             </div>
         </div>
+
+        <!-- 問題4 -->
         <div class="question">
             <p>4. 香港特別行政區設立了哪個機構專門負責維護國家安全的工作？</p>
             <div class="options">
@@ -129,6 +193,8 @@
                 <div class="option"><input type="radio" name="q4" value="d"> d) 以上皆是</div>
             </div>
         </div>
+
+        <!-- 問題5 -->
         <div class="question">
             <p>5. 國家安全教育的主要目的是什麼？</p>
             <div class="options">
@@ -138,6 +204,8 @@
                 <div class="option"><input type="radio" name="q5" value="d"> d) 以上皆是</div>
             </div>
         </div>
+
+        <!-- 問題6 -->
         <div class="question">
             <p>6. 根據「國家安全十個堅持」，國家安全工作必須堅持什麼的領導？</p>
             <div class="options">
@@ -147,6 +215,8 @@
                 <div class="option"><input type="radio" name="q6" value="d"> d) 香港司法機構</div>
             </div>
         </div>
+
+        <!-- 問題7 -->
         <div class="question">
             <p>7. 香港特別行政區維護國家安全委員會的主任是誰？</p>
             <div class="options">
@@ -156,6 +226,8 @@
                 <div class="option"><input type="radio" name="q7" value="d"> d) 香港保安局局長</div>
             </div>
         </div>
+
+        <!-- 問題8 -->
         <div class="question">
             <p>8. 以下哪項是國家安全的重要組成部分？</p>
             <div class="options">
@@ -165,6 +237,8 @@
                 <div class="option"><input type="radio" name="q8" value="d"> d) 以上皆是</div>
             </div>
         </div>
+
+        <!-- 問題9 -->
         <div class="question">
             <p>9. 香港特別行政區的國家安全工作應當遵循什麼原則？</p>
             <div class="options">
@@ -174,6 +248,8 @@
                 <div class="option"><input type="radio" name="q9" value="d"> d) 以上皆是</div>
             </div>
         </div>
+
+        <!-- 問題10 -->
         <div class="question">
             <p>10. 國家安全教育的重點對象包括哪些？</p>
             <div class="options">
@@ -183,6 +259,8 @@
                 <div class="option"><input type="radio" name="q10" value="d"> d) 以上皆是</div>
             </div>
         </div>
+
+        <!-- 問題11 -->
         <div class="question">
             <p>11. 根據「四個力量點」，維護國家安全需要依靠什麼力量？</p>
             <div class="options">
@@ -192,6 +270,8 @@
                 <div class="option"><input type="radio" name="q11" value="d"> d) 以上皆是</div>
             </div>
         </div>
+
+        <!-- 問題12 -->
         <div class="question">
             <p>12. 香港特別行政區維護國家安全委員會的職責不包括以下哪項？</p>
             <div class="options">
@@ -201,6 +281,8 @@
                 <div class="option"><input type="radio" name="q12" value="d"> d) 推進香港特別行政區維護國家安全的法律制度和執行機制建設</div>
             </div>
         </div>
+
+        <!-- 問題13 -->
         <div class="question">
             <p>13. 國家安全教育的內容不包括以下哪項？</p>
             <div class="options">
@@ -210,6 +292,8 @@
                 <div class="option"><input type="radio" name="q13" value="d"> d) 維護國家安全的責任和義務</div>
             </div>
         </div>
+
+        <!-- 問題14 -->
         <div class="question">
             <p>14. 香港特別行政區維護國家安全應當堅持什麼方針？</p>
             <div class="options">
@@ -219,6 +303,8 @@
                 <div class="option"><input type="radio" name="q14" value="d"> d) 只懲罰不預防</div>
             </div>
         </div>
+
+        <!-- 問題15 -->
         <div class="question">
             <p>15. 國家安全教育的實施途徑不包括以下哪項？</p>
             <div class="options">
@@ -228,6 +314,8 @@
                 <div class="option"><input type="radio" name="q15" value="d"> d) 專業培訓</div>
             </div>
         </div>
+
+        <!-- 問題16 -->
         <div class="question">
             <p>16. 根據「國家安全十個堅持」，國家安全工作必須堅持什麼理念？</p>
             <div class="options">
@@ -237,6 +325,8 @@
                 <div class="option"><input type="radio" name="q16" value="d"> d) 以政治安全為核心</div>
             </div>
         </div>
+
+        <!-- 問題17 -->
         <div class="question">
             <p>17. 香港特別行政區維護國家安全的「四個力量點」不包括以下哪項？</p>
             <div class="options">
@@ -246,6 +336,8 @@
                 <div class="option"><input type="radio" name="q17" value="d"> d) 社會力量</div>
             </div>
         </div>
+
+        <!-- 問題18 -->
         <div class="question">
             <p>18. 國家安全教育應當注重什麼？</p>
             <div class="options">
@@ -255,6 +347,8 @@
                 <div class="option"><input type="radio" name="q18" value="d"> d) 以上皆是</div>
             </div>
         </div>
+
+        <!-- 問題19 -->
         <div class="question">
             <p>19. 香港特別行政區維護國家安全的「十個堅持」不包括以下哪項？</p>
             <div class="options">
@@ -264,6 +358,8 @@
                 <div class="option"><input type="radio" name="q19" value="d"> d) 堅持總體國家安全觀</div>
             </div>
         </div>
+
+        <!-- 問題20 -->
         <div class="question">
             <p>20. 國家安全教育的根本目標是什麼？</p>
             <div class="options">
@@ -273,11 +369,13 @@
                 <div class="option"><input type="radio" name="q20" value="d"> d) 以上皆是</div>
             </div>
         </div>
+
         <button type="submit" id="submitBtn" disabled>提交答案</button>
     </form>
 
     <div id="result">
         <h2>測驗結果</h2>
+        <div id="userInfoDisplay" class="user-info"></div>
         <p>你的得分是: <span id="score">0</span>/20</p>
         <p id="message"></p>
     </div>
@@ -285,7 +383,7 @@
     <div class="admin-panel">
         <h3>管理員功能</h3>
         <input type="password" id="adminPassword" placeholder="輸入管理員密碼">
-        <button type="button" id="adminBtn" class="admin-btn">查看正確答案</button>
+        <button class="admin-btn" onclick="showAnswerKey()">查看正確答案</button>
         <div id="answerKey" class="answer-key">
             <h4>正確答案：</h4>
             <p>1. b) 2020年<br>
@@ -312,105 +410,153 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const quizForm = document.getElementById('quiz');
-            const submitBtn = document.getElementById('submitBtn');
-            const radioButtons = document.querySelectorAll('input[type="radio"]');
-            const adminBtn = document.getElementById('adminBtn');
-            const adminPassword = document.getElementById('adminPassword');
-            const answerKey = document.getElementById('answerKey');
-
-            function disableAllOptions() {
-                radioButtons.forEach(radio => {
-                    radio.disabled = true;
-                    radio.parentElement.classList.add('disabled-option');
-                });
-                submitBtn.disabled = true;
+        // 計時器功能（1分15秒=75秒）
+        let timeLeft = 75;
+        let timeUp = false;
+        const timer = document.getElementById('time');
+        const quizForm = document.getElementById('quiz');
+        const submitBtn = document.getElementById('submitBtn');
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        
+        const countdown = setInterval(function() {
+            const minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            
+            // 時間警告樣式
+            if (timeLeft <= 15) {
+                timer.innerHTML = `<span class="time-critical">${minutes}:${seconds}</span>`;
+            } else if (timeLeft <= 30) {
+                timer.innerHTML = `<span class="time-warning">${minutes}:${seconds}</span>`;
+            } else {
+                timer.textContent = `${minutes}:${seconds}`;
             }
-
-            function checkAllAnswered() {
-                const totalQuestions = 20;
-                let answeredCount = 0;
-                for (let i = 1; i <= totalQuestions; i++) {
-                    if (document.querySelector(`input[name="q${i}"]:checked`)) {
-                        answeredCount++;
-                    }
-                }
-                submitBtn.disabled = answeredCount !== totalQuestions;
-            }
-
-            function calculateScore() {
-                const correctAnswers = {
-                    q1: 'b', q2: 'b', q3: 'd', q4: 'd', q5: 'd',
-                    q6: 'a', q7: 'a', q8: 'd', q9: 'd', q10: 'd',
-                    q11: 'd', q12: 'c', q13: 'c', q14: 'a', q15: 'c',
-                    q16: 'a', q17: 'b', q18: 'd', q19: 'c', q20: 'd'
-                };
-                
-                let score = 0;
-                
-                for (let i = 1; i <= 20; i++) {
-                    const questionName = 'q' + i;
-                    const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
-                    
-                    if (selectedOption) {
-                        const parentLabel = selectedOption.parentElement;
-                        if (selectedOption.value === correctAnswers[questionName]) {
-                            score++;
-                            parentLabel.classList.add('correct');
-                        } else {
-                            parentLabel.classList.add('incorrect');
-                            const correctValue = correctAnswers[questionName];
-                            const correctLabel = document.querySelector(`input[name="${questionName}"][value="${correctValue}"]`).parentElement;
-                            if (correctLabel) {
-                                correctLabel.classList.add('correct');
-                            }
-                        }
-                    }
-                }
-                
-                document.getElementById('score').textContent = score;
-                const resultDiv = document.getElementById('result');
-                resultDiv.style.display = 'block';
-                
-                const message = document.getElementById('message');
-                if (score >= 18) {
-                    message.textContent = "優秀！你對香港國家安全知識有很好的了解。";
-                    message.style.color = "green";
-                } else if (score >= 15) {
-                    message.textContent = "良好！你對香港國家安全知識有基本了解，但還有提升空間。";
-                    message.style.color = "blue";
-                } else if (score >= 10) {
-                    message.textContent = "及格！建議你進一步學習香港國家安全相關知識。";
-                    message.style.color = "orange";
-                } else {
-                    message.textContent = "需要加強學習！請認真學習香港國家安全相關知識。";
-                    message.style.color = "red";
-                }
-                
-                resultDiv.scrollIntoView({ behavior: 'smooth' });
-            }
-
-            radioButtons.forEach(radio => {
-                radio.addEventListener('change', checkAllAnswered);
-            });
-
-            quizForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                calculateScore();
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timeUp = true;
+                timer.innerHTML = "<span class='time-critical'>時間到！</span>";
                 disableAllOptions();
-            });
+                calculateScore();
+            } else {
+                timeLeft--;
+            }
+        }, 1000);
 
-            adminBtn.addEventListener('click', function() {
-                if (adminPassword.value === 'tsk') {
-                    answerKey.style.display = answerKey.style.display === 'block' ? 'none' : 'block';
-                } else {
-                    alert('密碼錯誤！');
+        // 禁用所有選項
+        function disableAllOptions() {
+            radioButtons.forEach(radio => {
+                radio.disabled = true;
+                radio.parentElement.classList.add('disabled-option');
+            });
+            document.getElementById('name').disabled = true;
+            document.getElementById('class').disabled = true;
+            document.getElementById('studentId').disabled = true;
+            submitBtn.disabled = true;
+        }
+
+        // 檢查所有問題是否已回答
+        function checkAllAnswered() {
+            if(timeUp) return false;
+            
+            // 檢查個人資料
+            const name = document.getElementById('name').value;
+            const className = document.getElementById('class').value;
+            const studentId = document.getElementById('studentId').value;
+            
+            if (!name || !className || !studentId) {
+                submitBtn.disabled = true;
+                return false;
+            }
+            
+            // 檢查題目
+            let allAnswered = true;
+            for (let i = 1; i <= 20; i++) {
+                const questionName = 'q' + i;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (!selectedOption) {
+                    allAnswered = false;
+                    break;
                 }
-            });
+            }
+            submitBtn.disabled = !allAnswered;
+            return allAnswered;
+        }
 
-            checkAllAnswered(); 
+        // 計算分數
+        function calculateScore() {
+            // 顯示用戶信息
+            const name = document.getElementById('name').value;
+            const className = document.getElementById('class').value;
+            const studentId = document.getElementById('studentId').value;
+            document.getElementById('userInfoDisplay').innerHTML = `
+                姓名：${name || '未填寫'}<br>
+                班別：${className || '未填寫'}<br>
+                學號：${studentId || '未填寫'}
+            `;
+            
+            // 正確答案
+            const correctAnswers = {
+                q1: 'b', q2: 'b', q3: 'd', q4: 'd', q5: 'd',
+                q6: 'a', q7: 'a', q8: 'd', q9: 'd', q10: 'd',
+                q11: 'd', q12: 'c', q13: 'c', q14: 'a', q15: 'c',
+                q16: 'a', q17: 'b', q18: 'd', q19: 'c', q20: 'd'
+            };
+            
+            let score = 0;
+            
+            for (let i = 1; i <= 20; i++) {
+                const questionName = 'q' + i;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (selectedOption && selectedOption.value === correctAnswers[questionName]) {
+                    score++;
+                    selectedOption.parentElement.classList.add('correct');
+                } else if (selectedOption) {
+                    selectedOption.parentElement.classList.add('incorrect');
+                }
+            }
+            
+            document.getElementById('score').textContent = score;
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            
+            const message = document.getElementById('message');
+            if (score >= 18) {
+                message.textContent = "優秀！你對香港國家安全知識有很好的了解。";
+                message.style.color = "green";
+            } else if (score >= 15) {
+                message.textContent = "良好！你對香港國家安全知識有基本了解，但還有提升空間。";
+                message.style.color = "blue";
+            } else if (score >= 10) {
+                message.textContent = "及格！建議你進一步學習香港國家安全相關知識。";
+                message.style.color = "orange";
+            } else {
+                message.textContent = "需要加強學習！請認真學習香港國家安全相關知識。";
+                message.style.color = "red";
+            }
+            
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 表單提交處理
+        quizForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearInterval(countdown);
+            timeUp = true;
+            disableAllOptions();
+            calculateScore();
         });
+
+        // 管理員功能
+        function showAnswerKey() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === 'tsk') {
+                document.getElementById('answerKey').style.display = 'block';
+            } else {
+                alert('密碼錯誤！');
+            }
+        }
     </script>
 </body>
 </html>
