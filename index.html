@@ -430,16 +430,6 @@
         function checkAllAnswered() {
             if(timeUp) return false;
             
-            // 檢查個人資料
-            const name = document.getElementById('name').value;
-            const className = document.getElementById('class').value;
-            const studentId = document.getElementById('studentId').value;
-            
-            if (!name || !className || !studentId) {
-                submitBtn.disabled = true;
-                return false;
-            }
-            
             // 檢查題目
             let allAnswered = true;
             for (let i = 1; i <= 20; i++) {
@@ -448,7 +438,6 @@
                 if (!selectedOption) {
                     allAnswered = false;
                     break;
-                }
             }
             submitBtn.disabled = !allAnswered;
             return allAnswered;
